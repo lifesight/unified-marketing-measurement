@@ -1,0 +1,340 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/lifesight/unified-marketing-measurement/schemas/input-schema.json",
+  "title": "UMM Input Data Schema",
+  "description": "Standard schema for input data required by the Unified Marketing Measurement framework. All fields are weekly unless otherwise noted. See docs/data-requirements.md for detailed guidance on sourcing and preparing each field.",
+  "type": "object",
+  "required": ["metadata", "time_series"],
+  "additionalProperties": false,
+
+  "properties": {
+
+    "metadata": {
+      "type": "object",
+      "description": "Dataset-level metadata.",
+      "required": ["brand", "currency", "timezone", "granularity", "date_range", "outcome_metric"],
+      "additionalProperties": false,
+      "properties": {
+        "brand": {
+          "type": "string",
+          "description": "Brand or business unit name. Used for labeling outputs."
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO 4217 currency code for all monetary values in this dataset.",
+          "pattern": "^[A-Z]{3}$",
+          "examples": ["USD", "GBP", "EUR", "AUD"]
+        },
+        "timezone": {
+          "type": "string",
+          "description": "IANA timezone for the reporting week. All dates are the Monday (start) of the reporting week.",
+          "examples": ["America/New_York", "Europe/London", "UTC"]
+        },
+        "granularity": {
+          "type": "string",
+          "description": "Time granularity of the data.",
+          "enum": ["weekly", "daily"],
+          "default": "weekly"
+        },
+        "date_range": {
+          "type": "object",
+          "required": ["start", "end"],
+          "additionalProperties": false,
+          "properties": {
+            "start": {
+              "type": "string",
+              "format": "date",
+              "description": "First date in dataset. Must be a Monday for weekly data."
+            },
+            "end": {
+              "type": "string",
+              "format": "date",
+              "description": "Last date in dataset. Must be a Monday for weekly data."
+            }
+          }
+        },
+        "outcome_metric": {
+          "type": "string",
+          "description": "The primary business outcome being modeled.",
+          "enum": ["revenue", "conversions", "orders", "leads", "installs", "visits"],
+          "examples": ["revenue"]
+        },
+        "geography": {
+          "type": "string",
+          "description": "Geographic scope of the dataset. Use ISO 3166-1 alpha-2 for country-level, or describe the scope (e.g., 'US national', 'EMEA', 'California DMA').",
+          "examples": ["US", "GB", "US national", "EMEA"]
+        },
+        "schema_version": {
+          "type": "string",
+          "description": "UMM input schema version.",
+          "const": "1.0.0"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Free-text notes about this dataset — known data quality issues, unusual periods, structural breaks."
+        }
+      }
+    },
+
+    "time_series": {
+      "type": "array",
+      "description": "Array of weekly (or daily) observations. Each object represents one time period.",
+      "minItems": 78,
+      "items": {
+        "type": "object",
+        "required": ["date", "outcome", "spend"],
+        "additionalProperties": false,
+        "properties": {
+
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "ISO 8601 date. For weekly data: the Monday starting the week. For daily: the calendar date."
+          },
+
+          "outcome": {
+            "type": "object",
+            "description": "Business outcome data for this period.",
+            "required": ["value"],
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Value of the outcome metric (revenue in currency units, or count for conversions/orders/leads)."
+              },
+              "adjusted": {
+                "type": "boolean",
+                "description": "Set true if this value has been adjusted for non-marketing factors (e.g., large non-marketing-driven B2B deals removed). If true, document the adjustment in metadata.notes.",
+                "default": false
+              }
+            }
+          },
+
+          "spend": {
+            "type": "object",
+            "description": "Marketing spend by channel for this period. All values in the currency specified in metadata.currency. Use 0 (not null) for channels with no spend in a given period.",
+            "additionalProperties": false,
+            "properties": {
+
+              "paid_search_brand": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Paid search spend targeting branded keywords (brand name, brand + product terms)."
+              },
+              "paid_search_nonbrand": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Paid search spend targeting non-branded, category, and competitor keywords."
+              },
+              "paid_social": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Total paid social spend across all platforms (Meta, TikTok, Pinterest, LinkedIn, Snapchat, X). Split by platform in spend_detail if available."
+              },
+              "display": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Display and programmatic advertising spend."
+              },
+              "online_video": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Online video spend (YouTube, OLV, pre-roll). Exclude CTV — report in tv_ctv."
+              },
+              "tv_linear": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Linear TV spend (national + local broadcast and cable)."
+              },
+              "tv_ctv": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Connected TV (CTV/OTT) spend."
+              },
+              "ooh": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Out-of-home spend (billboards, transit, DOOH combined unless separately material)."
+              },
+              "radio": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Radio (broadcast + streaming audio)."
+              },
+              "email": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Email/CRM campaign spend (platform costs + production, excluding staff time)."
+              },
+              "affiliate": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Affiliate and partner marketing spend (commission + platform fees)."
+              },
+              "retail_media": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Retail media network spend (Amazon Ads, Walmart Connect, Criteo, etc.)."
+              },
+              "influencer": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Influencer and creator marketing spend."
+              },
+              "direct_mail": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Direct mail spend."
+              },
+              "other": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Any spend channel not covered above that represents >2% of total budget. Document in metadata.notes."
+              }
+            }
+          },
+
+          "spend_detail": {
+            "type": "object",
+            "description": "Optional platform-level spend breakdowns within the top-level channel categories. Use when platform-level splits are material and available.",
+            "additionalProperties": false,
+            "properties": {
+              "paid_social_meta": { "type": "number", "minimum": 0 },
+              "paid_social_tiktok": { "type": "number", "minimum": 0 },
+              "paid_social_pinterest": { "type": "number", "minimum": 0 },
+              "paid_social_linkedin": { "type": "number", "minimum": 0 },
+              "paid_social_snapchat": { "type": "number", "minimum": 0 },
+              "paid_social_x": { "type": "number", "minimum": 0 }
+            }
+          },
+
+          "covariates": {
+            "type": "object",
+            "description": "Control variables that influence the outcome but are not marketing spend. Include all variables that apply — omitted variables can cause spend to absorb their effects.",
+            "additionalProperties": false,
+            "properties": {
+
+              "price_index": {
+                "type": "number",
+                "description": "Relative average selling price index (1.0 = baseline). Include if pricing changes materially during the data window."
+              },
+              "distribution_index": {
+                "type": "number",
+                "description": "Distribution coverage index (1.0 = baseline). Include if distribution changed during the data window (new retail partners, store openings/closures)."
+              },
+              "promotion_flag": {
+                "type": "integer",
+                "enum": [0, 1],
+                "description": "1 if a major promotional event occurred this period (sale, discount, bundle offer), 0 otherwise."
+              },
+              "promotion_depth": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Average promotional discount depth this period (0 = no discount, 0.2 = 20% off). Use instead of or alongside promotion_flag."
+              },
+              "competitor_event_flag": {
+                "type": "integer",
+                "enum": [0, 1],
+                "description": "1 if a major competitor event occurred (launch, price cut, recall) that likely affected category demand, 0 otherwise."
+              },
+              "holiday_flag": {
+                "type": "integer",
+                "enum": [0, 1],
+                "description": "1 if a major holiday falls within this period (country-specific), 0 otherwise. Supplement with specific holiday indicators in holiday_indicators."
+              },
+              "holiday_indicators": {
+                "type": "object",
+                "description": "Per-holiday binary indicators. Add any holiday relevant to the business.",
+                "additionalProperties": { "type": "integer", "enum": [0, 1] },
+                "examples": [
+                  {
+                    "christmas_week": 1,
+                    "black_friday_week": 0,
+                    "cyber_monday_week": 0,
+                    "valentines_week": 0,
+                    "mothers_day_week": 0,
+                    "prime_day_week": 0
+                  }
+                ]
+              },
+              "consumer_confidence": {
+                "type": "number",
+                "description": "Consumer confidence index value for the period (use national index appropriate to geography)."
+              },
+              "macro_category_index": {
+                "type": "number",
+                "description": "Category-level spend index from third-party data (e.g., credit card spend index for the relevant category). Useful for separating macro demand shifts from media-driven growth."
+              },
+              "anomaly_flag": {
+                "type": "integer",
+                "enum": [0, 1],
+                "description": "1 if this period contains an anomaly (data outage, COVID lockdown, supply disruption, one-time event) that should be modeled separately. Document in metadata.notes."
+              },
+              "product_launch_flag": {
+                "type": "integer",
+                "enum": [0, 1],
+                "description": "1 if a major product launch occurred this period that would have had independent demand impact, 0 otherwise."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "examples": [
+    {
+      "metadata": {
+        "brand": "ExampleBrand",
+        "currency": "USD",
+        "timezone": "America/New_York",
+        "granularity": "weekly",
+        "date_range": {
+          "start": "2022-01-03",
+          "end": "2024-12-30"
+        },
+        "outcome_metric": "revenue",
+        "geography": "US national",
+        "schema_version": "1.0.0",
+        "notes": "TV spend is gross (before agency commission). Q2 2022 has a 2-week data gap imputed with linear interpolation — flagged with anomaly_flag."
+      },
+      "time_series": [
+        {
+          "date": "2022-01-03",
+          "outcome": {
+            "value": 1250000,
+            "adjusted": false
+          },
+          "spend": {
+            "paid_search_brand": 45000,
+            "paid_search_nonbrand": 120000,
+            "paid_social": 85000,
+            "display": 20000,
+            "online_video": 0,
+            "tv_linear": 350000,
+            "tv_ctv": 0,
+            "ooh": 0,
+            "radio": 0,
+            "email": 2000,
+            "affiliate": 15000,
+            "retail_media": 0,
+            "influencer": 0,
+            "direct_mail": 0,
+            "other": 0
+          },
+          "covariates": {
+            "price_index": 1.0,
+            "promotion_flag": 0,
+            "holiday_flag": 1,
+            "holiday_indicators": {
+              "new_year_week": 1
+            },
+            "anomaly_flag": 0
+          }
+        }
+      ]
+    }
+  ]
+}
