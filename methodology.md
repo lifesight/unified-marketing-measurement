@@ -320,7 +320,7 @@ UMM is not a one-time project. It requires:
 
 ## Further reading
 
-- [Causal MMM specification](../specs/mmm-spec.md)
+- [Causal MMM specification](../blob/main/mmm-spec.md)
 - [Incrementality testing specification](../specs/incrementality-spec.md)
 - [Causal attribution specification](../specs/attribution-spec.md)
 - [Calibration specification](../specs/calibration-spec.md)
