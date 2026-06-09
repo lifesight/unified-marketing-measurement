@@ -128,6 +128,8 @@ unified-marketing-measurement/
 
 **Researchers** studying causal inference in marketing contexts who want a practitioner-facing specification.
 
+**Marketers** Practioners who are responsible for allocating ad spend across platforms to see true incremental revenue growth.
+
 ---
 
 ## What this is not
