@@ -2,7 +2,7 @@
 
 Technical specification for the causal attribution component of UMM. This document defines the attribution methodology, calibration process, data inputs, output formats, and integration with MMM and incrementality testing.
 
-For methodology context, see [docs/methodology.md](../docs/methodology.md). For terminology, see [docs/glossary.md](../docs/glossary.md).
+For methodology context, see [docs/methodology.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/methodology.md). For terminology, see [docs/glossary.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/glossary.md).
 
 ---
 
