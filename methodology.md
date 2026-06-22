@@ -321,9 +321,9 @@ UMM is not a one-time project. It requires:
 ## Further reading
 
 - [Causal MMM specification](https://github.com/lifesight/unified-marketing-measurement/blob/main/mmm-spec.md)
-- [Incrementality testing specification](../specs/incrementality-spec.md)
-- [Causal attribution specification](../specs/attribution-spec.md)
-- [Calibration specification](../specs/calibration-spec.md)
-- [Data requirements](data-requirements.md)
-- [Glossary](glossary.md)
+- [Incrementality testing specification](https://github.com/lifesight/unified-marketing-measurement/blob/main/incrementality-spec.md)
+- [Causal attribution specification](https://github.com/lifesight/unified-marketing-measurement/blob/main/attribution-spec.md)
+- [Calibration specification](https://github.com/lifesight/unified-marketing-measurement/blob/main/calibration-spec.md)
+- [Data requirements](https://github.com/lifesight/unified-marketing-measurement/blob/main/data-requirements.md)
+- [Glossary](https://github.com/lifesight/unified-marketing-measurement/blob/main/glossary.md)
 - [Lifesight platform](https://lifesight.io) — production implementation of UMM
