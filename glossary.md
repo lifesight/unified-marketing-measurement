@@ -39,7 +39,7 @@ A channel-level curve showing expected incremental revenue at each spend level. 
 ## C
 
 **Calibration**
-The process of aligning the outputs of multiple measurement methods — MMM, incrementality testing, and attribution — so they produce consistent estimates of channel impact. In UMM, calibration works in both directions: experimental results update MMM priors; MMM outputs regularize attribution weights. See [calibration-spec.md](../specs/calibration-spec.md).
+The process of aligning the outputs of multiple measurement methods — MMM, incrementality testing, and attribution — so they produce consistent estimates of channel impact. In UMM, calibration works in both directions: experimental results update MMM priors; MMM outputs regularize attribution weights. See [calibration-spec.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/calibration-spec.md).
 
 **Calibration drift**
 When MMM channel contribution estimates diverge from experimentally measured iROAS beyond acceptable thresholds. Drift indicates the model has moved away from ground truth and requires prior updates, covariate review, or re-specification. Yellow flag: >20% divergence. Red flag: >40% divergence.
