@@ -144,7 +144,7 @@ The property of a statistical model where the data is sufficient to estimate the
 The causal, marginal impact of a marketing action — what would not have happened without it. A channel is incremental if removing it would reduce total revenue. A channel with high reported ROAS but low incrementality is capturing existing intent rather than generating new demand.
 
 **Incrementality testing**
-The experimental practice of measuring true incremental impact through controlled experiments (geo-lift tests, holdout tests). The gold standard for estimating iROAS. Used in UMM both to measure channel performance directly and to calibrate MMM model priors. See [incrementality-spec.md](../specs/incrementality-spec.md).
+The experimental practice of measuring true incremental impact through controlled experiments (geo-lift tests, holdout tests). The gold standard for estimating iROAS. Used in UMM both to measure channel performance directly and to calibrate MMM model priors. See [incrementality-spec.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/incrementality-spec.md).
 
 **Informative prior**
 A Bayesian prior distribution that encodes meaningful domain knowledge, as opposed to a weakly informative or flat prior. In UMM, informative priors encode knowledge about channel response functions (e.g., TV has higher adstock carryover than paid search) and are updated over time with experimental results.
@@ -164,7 +164,7 @@ The incremental effect of a marketing action — typically expressed as a percen
 The process of identifying control markets that most closely resemble treatment markets prior to a geo-lift test. Matching is done on pre-test revenue trajectories, seasonality patterns, volume, and demographic characteristics. Good matching minimizes the risk that post-test differences reflect pre-existing divergence rather than treatment effect.
 
 **Marketing Mix Modeling (MMM)**
-A statistical modeling approach that uses historical data on marketing spend and business outcomes to estimate each channel's contribution to those outcomes. In UMM, the causal variant uses Bayesian inference and is continuously calibrated against experimental results. See [mmm-spec.md](../specs/mmm-spec.md).
+A statistical modeling approach that uses historical data on marketing spend and business outcomes to estimate each channel's contribution to those outcomes. In UMM, the causal variant uses Bayesian inference and is continuously calibrated against experimental results. See [mmm-spec.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/mmm-spec.md).
 
 **Minimum detectable effect (MDE)**
 The smallest true effect size that a given experimental design can reliably detect, given the planned duration, market variance, sample size, and significance threshold. A power analysis calculates MDE before a test runs — if the MDE is larger than the expected true effect, the test should be redesigned.
@@ -216,7 +216,7 @@ The diminishing returns pattern in channel response: the first dollar of spend g
 The breakdown of total marketing spend by channel, showing how much is allocated to each channel and how that compares to the optimal allocation implied by budget response curves.
 
 **Synthetic control**
-A method for constructing a counterfactual by computing a weighted combination of control markets that most closely matches the treatment market's pre-test trajectory. More precise than simple difference-in-differences when the number of treatment markets is small. Used in UMM geo-lift tests by default. See [incrementality-spec.md](../specs/incrementality-spec.md).
+A method for constructing a counterfactual by computing a weighted combination of control markets that most closely matches the treatment market's pre-test trajectory. More precise than simple difference-in-differences when the number of treatment markets is small. Used in UMM geo-lift tests by default. See [incrementality-spec.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/incrementality-spec.md).
 
 ---
 
@@ -233,7 +233,7 @@ In a geo-lift test, the markets that receive the campaign being tested. Their re
 ## U
 
 **Unified Marketing Measurement (UMM)**
-The framework documented in this repository. A system that combines causal MMM, incrementality testing, and causal attribution into a single calibrated measurement stack, producing one consistent view of incremental channel impact across all marketing investment. See [methodology.md](methodology.md).
+The framework documented in this repository. A system that combines causal MMM, incrementality testing, and causal attribution into a single calibrated measurement stack, producing one consistent view of incremental channel impact across all marketing investment. See [methodology.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/methodology.md).
 
 ---
 
