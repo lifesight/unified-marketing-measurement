@@ -161,7 +161,7 @@ Default: view-through attribution is **off** for display and social retargeting 
 |---|---|---|
 | User / device ID | Yes | Consistent identifier across touchpoints (hashed; no PII) |
 | Touchpoint timestamp | Yes | Datetime of each impression or click |
-| Channel | Yes | From the channel taxonomy in [schemas/channel-taxonomy.json](../schemas/channel-taxonomy.json) |
+| Channel | Yes | From the channel taxonomy in [schemas/channel-taxonomy.json](https://github.com/lifesight/unified-marketing-measurement/blob/main/input-schema.json) |
 | Campaign ID | Yes | Platform-native campaign identifier |
 | Ad format | Recommended | Video, display, search, social feed, etc. |
 | Conversion flag | Yes | 1 if a conversion event occurred, 0 otherwise |
