@@ -2,7 +2,7 @@
 
 Technical specification for the calibration layer of UMM — the mechanism that keeps causal MMM, incrementality testing, and causal attribution aligned into a single consistent measurement system.
 
-For methodology context, see [docs/methodology.md](../docs/methodology.md). For terminology, see [docs/glossary.md](../docs/glossary.md).
+For methodology context, see [docs/methodology.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/methodology.md). For terminology, see [docs/glossary.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/glossary.md).
 
 ---
 
@@ -190,7 +190,7 @@ The experiment roadmap is updated weekly with the current priority scores. The m
 
 ### Mixing weight adjustment rules
 
-The baseline mixing weights (defined in [attribution-spec.md](attribution-spec.md)) are adjusted under the following conditions:
+The baseline mixing weights (defined in [attribution-spec.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/attribution-spec.md) are adjusted under the following conditions:
 
 **Increase experimental weight (γ) when:**
 - A test completed within the last 6 months for the channel
