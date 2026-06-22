@@ -2,7 +2,7 @@
 
 This document specifies what data is needed to run UMM, how to source each data type, minimum quality standards, and how to handle common data problems.
 
-For the formal data schema, see [schemas/input-schema.json](../schemas/input-schema.json).
+For the formal data schema, see [schemas/input-schema.json](https://github.com/lifesight/unified-marketing-measurement/blob/main/input-schema.json).
 
 ---
 
@@ -196,7 +196,7 @@ Fewer than 52 weeks of data is insufficient for MMM regardless of circumstances.
 ## Data delivery format
 
 Submit data as:
-- **JSON**: conforming to [schemas/input-schema.json](../schemas/input-schema.json) (preferred)
+- **JSON**: conforming to [schemas/input-schema.json](https://github.com/lifesight/unified-marketing-measurement/blob/main/input-schema.json) (preferred)
 - **CSV**: one row per week, columns matching the schema field names (acceptable)
 
 Do not submit:
