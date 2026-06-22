@@ -2,7 +2,7 @@
 
 Technical specification for the incrementality testing component of UMM. This document defines experiment design standards, geo-lift test methodology, holdout test methodology, analysis methods, and integration with the calibration loop.
 
-For methodology context, see [docs/methodology.md](../docs/methodology.md). For terminology, see [docs/glossary.md](../docs/glossary.md).
+For methodology context, see [docs/methodology.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/methodology.md). For terminology, see [docs/glossary.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/glossary.md).
 
 ---
 
@@ -279,7 +279,7 @@ If the experimental result diverges >40% from the MMM estimate, convene a model 
 
 ### Attribution weight update
 
-Pass experimental iROAS estimates to the attribution calibration process after each completed test. See [attribution-spec.md](attribution-spec.md) for the calibration weighting formula.
+Pass experimental iROAS estimates to the attribution calibration process after each completed test. See [attribution-spec.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/attribution-spec.md) for the calibration weighting formula.
 
 ---
 
