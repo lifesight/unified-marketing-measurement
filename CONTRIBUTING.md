@@ -116,8 +116,3 @@ Be direct. Be honest about limitations. Engage with criticism on its merits. Mea
 
 We do not tolerate harassment, dismissiveness toward newcomers, or bad-faith engagement.
 
----
-
-## Questions
-
-Open an issue with the `question` label, or reach out to the Lifesight measurement science team at [measurement@lifesight.io](mailto:measurement@lifesight.io).
