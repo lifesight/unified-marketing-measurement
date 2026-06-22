@@ -2,7 +2,7 @@
 
 Technical specification for the causal Marketing Mix Modeling component of UMM. This document defines the model structure, estimation approach, required inputs, validation criteria, and integration points with the rest of the UMM framework.
 
-For methodology context, see [docs/methodology.md](../docs/methodology.md). For terminology, see [docs/glossary.md](../docs/glossary.md).
+For methodology context, see [docs/methodology.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/methodology.md). For terminology, see [docs/glossary.md](https://github.com/lifesight/unified-marketing-measurement/blob/main/glossary.md).
 
 ---
 
@@ -185,7 +185,7 @@ Standard reporting uses median ± 80% CI.
 
 - Granularity: Weekly (minimum), daily (preferred for digital channels)
 - History: 2+ years (104+ weekly observations) strongly preferred; absolute minimum 78 weeks
-- Format: See [schemas/input-schema.json](../schemas/input-schema.json)
+- Format: See [schemas/input-schema.json](https://github.com/lifesight/unified-marketing-measurement/blob/main/input-schema.json)
 - Required channels: All channels with material spend (>2% of total budget)
 - Missing values: Impute zeros for weeks with no spend; flag anomalous zero-spend weeks for review
 
